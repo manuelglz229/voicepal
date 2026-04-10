@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caregiver Voice Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Realtime Care Coordination</p>
+          <h1>Caregiver platform for compassionate AI phone check-ins</h1>
+          <p class="lede">
+            Outbound calls, live health monitoring, medication adherence tracking, and memory-aware conversations built for elderly support teams.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="stat">
+            <span>Target latency</span>
+            <strong>&lt;300ms perceived</strong>
+          </div>
+          <div class="stat">
+            <span>Voice path</span>
+            <strong>Twilio &lt;-&gt; OpenAI Realtime</strong>
+          </div>
+          <div class="stat">
+            <span>Memory</span>
+            <strong>Cross-call longitudinal notes</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="panel metrics-panel">
+          <div class="panel-header">
+            <h2>Operations Snapshot</h2>
+          </div>
+          <div id="metrics" class="metrics"></div>
+        </section>
+
+        <section class="panel roster-panel">
+          <div class="panel-header">
+            <h2>Elderly Users</h2>
+            <button id="refresh" class="ghost-btn">Refresh</button>
+          </div>
+          <div id="elder-list" class="elder-list"></div>
+        </section>
+
+        <section class="panel activity-panel">
+          <div class="panel-header">
+            <h2>Recent Conversations</h2>
+          </div>
+          <div id="conversation-list" class="conversation-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="elder-template">
+      <article class="elder-card">
+        <div class="elder-topline">
+          <div>
+            <h3></h3>
+            <p class="muted phone"></p>
+          </div>
+          <span class="risk-pill"></span>
+        </div>
+        <p class="baseline"></p>
+        <div class="memory-box">
+          <strong>Medication plan</strong>
+          <p class="medication"></p>
+        </div>
+        <div class="memory-box">
+          <strong>Latest insight</strong>
+          <p class="insight"></p>
+        </div>
+        <div class="card-actions">
+          <button class="call-btn">Start Check-in Call</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

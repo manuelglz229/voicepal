@@ -3,6 +3,7 @@ import Fastify from "fastify";
 import formbody from "@fastify/formbody";
 import websocket from "@fastify/websocket";
 import fastifyStatic from "@fastify/static";
+import type WebSocket, { RawData } from "ws";
 import { z } from "zod";
 import "./db.js";
 import { config, paths } from "./config.js";
@@ -156,10 +157,10 @@ app.get("/api/dashboard", async () => {
 });
 
 app.get("/ws/twilio-media", { websocket: true }, (connection) => {
-  const socket = "socket" in connection ? connection.socket : connection;
+  const socket = ("socket" in connection ? connection.socket : connection) as WebSocket;
   const session = new VoiceBridgeSession(socket);
 
-  socket.on("message", (raw) => {
+  socket.on("message", (raw: RawData) => {
     session.handleTwilioMessage(raw.toString());
   });
 });
